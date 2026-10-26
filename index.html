@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>coobyp</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="coobyp - music by cooper pulliam. links to everything.">
+<style>
+/* old-school personal homepage: tiled background, one white box in the middle, verdana, blue links */
+:root {
+  --tile-a: #1d3557;
+  --tile-b: #22406a;
+  --box: #ffffff;
+  --text: #000000;
+  --muted: #555555;
+  --bar: #336699;
+  --bar-dark: #003366;
+  --link: #0000cc;
+  --visited: #551a8b;
+  --hover: #cc0000;
+  color-scheme: light;
+}
+body {
+  margin: 0;
+  background-color: var(--tile-a);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Crect width='8' height='8' fill='%231d3557'/%3E%3Crect width='4' height='4' fill='%2322406a'/%3E%3Crect x='4' y='4' width='4' height='4' fill='%2322406a'/%3E%3C/svg%3E");
+  color: var(--text);
+  font-family: Verdana, Tahoma, Geneva, sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 16px 24px;
+}
+a { color: var(--link); }
+a:visited { color: var(--visited); }
+a:hover { color: var(--hover); }
+#main {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--box);
+  border: 2px solid #000;
+}
+#banner {
+  background: var(--bar-dark);
+  border-bottom: 2px solid #000;
+  padding: 18px 14px;
+  color: #fff;
+}
+#banner h1 {
+  margin: 0;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #000;
+}
+#banner div { font-size: 11px; color: #cfe0f5; margin-top: 4px; }
+#nav { background: #e5e5e5; border-bottom: 1px solid #999; padding: 4px 8px; font-size: 11px; }
+#nav a { font-weight: bold; }
+#cols { display: flex; flex-wrap: wrap; }
+#side {
+  flex: 0 0 200px;
+  background: #eef3fa;
+  border-right: 1px solid #999;
+  padding: 10px;
+}
+#content { flex: 1 1 360px; min-width: 0; padding: 10px 14px; }
+.hd {
+  background: var(--bar);
+  color: #fff;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 2px 6px;
+  margin: 0 0 6px;
+  border: 1px solid var(--bar-dark);
+}
+.blk { margin-bottom: 16px; }
+#side ul { list-style: square; margin: 0; padding-left: 18px; }
+#side li { margin-bottom: 3px; }
+#side .small { font-size: 10px; color: var(--muted); }
+p { margin: 0 0 8px; }
+table.lnk { border-collapse: collapse; width: 100%; font-size: 12px; }
+table.lnk td { border: 1px solid #bbb; padding: 4px 6px; vertical-align: top; }
+table.lnk tr:nth-child(odd) td { background: #f4f4f4; }
+table.lnk td.u { color: var(--muted); }
+.embed iframe { display: block; width: 100%; height: 166px; border: 1px solid #999; margin: 6px 0; }
+#footer {
+  border-top: 2px solid #000;
+  background: #e5e5e5;
+  text-align: center;
+  font-size: 10px;
+  color: var(--muted);
+  padding: 6px 8px;
+}
+button { font: 11px Verdana, Tahoma, sans-serif; }
+@media (max-width: 560px) {
+  #side { flex-basis: 100%; border-right: 0; border-bottom: 1px solid #999; }
+  #banner h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+<div id="main">
+
+  <div id="banner">
+    <h1>coobyp</h1>
+    <div>the official site of coobyp (cooper pulliam)</div>
+  </div>
+
+  <div id="nav">
+    <a href="#music">music</a> | <a href="#links">links</a> | <a href="#about">about</a> | <a href="#contact">contact</a>
+  </div>
+
+  <div id="cols">
+    <div id="side">
+      <div class="blk">
+        <div class="hd">:: links ::</div>
+        <ul>
+          <li><a href="https://soundcloud.com/coobyp" target="_blank" rel="noopener">soundcloud</a></li>
+          <li><a href="https://www.youtube.com/@coobyp" target="_blank" rel="noopener">youtube</a></li>
+          <li><a href="https://www.instagram.com/coobyp" target="_blank" rel="noopener">instagram</a></li>
+          <li><a href="https://x.com/coobyp" target="_blank" rel="noopener">x / twitter</a></li>
+          <li><a href="https://www.snapchat.com/add/coobyp" target="_blank" rel="noopener">snapchat</a></li>
+          <li><a href="https://bsky.app/profile/pulliam.biz" target="_blank" rel="noopener">bluesky</a></li>
+          <li><a href="https://github.com/coobyp" target="_blank" rel="noopener">github</a></li>
+        </ul>
+      </div>
+      <div class="blk">
+        <div class="hd">:: contact ::</div>
+        <p style="font-size:11px;word-break:break-all;">me@coobyp.com</p>
+      </div>
+      <div class="blk">
+        <div class="hd">:: site info ::</div>
+        <p class="small">updated: 10/26/2026<br>you've been here <b id="visits">1</b> time(s)<br>best viewed at 1024x768</p>
+      </div>
+    </div>
+
+    <div id="content">
+      <div class="blk">
+        <div class="hd">welcome</div>
+        <p>welcome to my site. i make music as coobyp. all my links are here.</p>
+      </div>
+
+      <div class="blk" id="music">
+        <div class="hd">music</div>
+        <p>everything is on soundcloud: <a href="https://soundcloud.com/coobyp" target="_blank" rel="noopener">soundcloud.com/coobyp</a></p>
+        <div class="embed" id="embed"></div>
+      </div>
+
+      <div class="blk" id="links">
+        <div class="hd">find me</div>
+        <table class="lnk">
+          <tr><td><a href="https://soundcloud.com/coobyp" target="_blank" rel="noopener">SoundCloud</a></td><td class="u">soundcloud.com/coobyp</td></tr>
+          <tr><td><a href="https://www.youtube.com/@coobyp" target="_blank" rel="noopener">YouTube</a></td><td class="u">@coobyp</td></tr>
+          <tr><td><a href="https://www.instagram.com/coobyp" target="_blank" rel="noopener">Instagram</a></td><td class="u">@coobyp</td></tr>
+          <tr><td><a href="https://x.com/coobyp" target="_blank" rel="noopener">X</a></td><td class="u">@coobyp</td></tr>
+          <tr><td><a href="https://www.snapchat.com/add/coobyp" target="_blank" rel="noopener">Snapchat</a></td><td class="u">coobyp</td></tr>
+          <tr><td><a href="https://bsky.app/profile/pulliam.biz" target="_blank" rel="noopener">Bluesky</a></td><td class="u">@pulliam.biz</td></tr>
+          <tr><td><a href="https://github.com/coobyp" target="_blank" rel="noopener">GitHub</a></td><td class="u">coobyp</td></tr>
+          <tr><td><a href="https://pulliam.biz" target="_blank" rel="noopener">Pulliam Operations</a></td><td class="u">my computer repair business</td></tr>
+        </table>
+      </div>
+
+      <div class="blk" id="about">
+        <div class="hd">about</div>
+        <p>name: cooper pulliam (cooby)<br>
+        from: west tennessee<br>
+        used to go by: ninety thousand<br>
+        day job: it / computer repair</p>
+      </div>
+
+      <div class="blk" id="contact">
+        <div class="hd">contact</div>
+        <p>email: <b id="email">me@coobyp.com</b> <button type="button" id="copy">copy</button> <span id="copied"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    &copy; <span id="yr">2026</span> coobyp &nbsp;|&nbsp; no ads, no tracking &nbsp;|&nbsp; <a href="#main">back to top</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  var yr = document.getElementById('yr');
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  // your own visit count, kept in your browser only
+  try {
+    var n = parseInt(localStorage.getItem('coobyp_visits') || '0', 10) + 1;
+    localStorage.setItem('coobyp_visits', String(n));
+    document.getElementById('visits').textContent = n;
+  } catch (e) {}
+
+  // soundcloud player only on the real site (previews block embeds)
+  var host = location.hostname || '';
+  var ok = /(^|\.)coobyp\.com$/.test(host) || /github\.io$/.test(host) || /pages\.dev$/.test(host) || host === 'localhost' || host === '127.0.0.1';
+  var box = document.getElementById('embed');
+  if (box && ok) {
+    var f = document.createElement('iframe');
+    f.title = 'coobyp on soundcloud';
+    f.loading = 'lazy';
+    f.allow = 'autoplay';
+    f.src = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent('https://soundcloud.com/coobyp') +
+      '&color=%23336699&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&visual=false';
+    box.appendChild(f);
+  }
+
+  var btn = document.getElementById('copy');
+  var out = document.getElementById('copied');
+  if (btn) btn.addEventListener('click', function () {
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      out.textContent = '(selected)';
+    }
+    try {
+      navigator.clipboard.writeText('me@coobyp.com').then(function () { out.textContent = '(copied)'; }, fallback);
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
