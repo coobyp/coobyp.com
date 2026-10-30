@@ -150,7 +150,6 @@ main { position: relative; z-index: 1; }
   padding: 12px 0; transform: rotate(-1.5deg) scale(1.04); margin: 30px 0 60px;
   display: block; text-decoration: none;
 }
-.ticker b { font-weight: 400; color: #fff; -webkit-text-stroke: 0; }
 .ticker div { display: inline-block; animation: tick 28s linear infinite; }
 .ticker span { padding: 0 .6em; }
 .ticker span:nth-child(3n+2) { -webkit-text-stroke: 1px #000; color: transparent; }
@@ -319,8 +318,13 @@ footer {
     <div class="scroll-hint">scroll ↓</div>
   </div>
 
-  <a class="ticker" href="#links" aria-label="coobians and counting. join us">
-    <div id="tick"></div>
+  <a class="ticker" href="https://discord.gg/coobyp" target="_blank" rel="noopener" aria-label="become a part of cooby's corner on discord">
+    <div aria-hidden="true">
+      <span>become a part of cooby's corner</span><span>join the discord</span><span>✦</span>
+      <span>become a part of cooby's corner</span><span>join the discord</span><span>✦</span>
+      <span>become a part of cooby's corner</span><span>join the discord</span><span>✦</span>
+      <span>become a part of cooby's corner</span><span>join the discord</span><span>✦</span>
+    </div>
   </a>
 
   <section id="about" class="rv">
@@ -439,29 +443,6 @@ footer {
       buf = '';
     }
   });
-
-  // coobian count: stats.json is refreshed every few hours by the github action.
-  // raw.githubusercontent picks up new numbers without waiting for a pages rebuild.
-  var tick = document.getElementById('tick');
-  function ticker(n) {
-    var one = '<span>' + (n == null ? '' : '<b class="ct">' + n.toLocaleString() + '</b> ') + 'coobians &amp; counting</span><span>join us</span><span>✦</span>';
-    tick.innerHTML = new Array(9).join(one);
-  }
-  ticker(null);
-  function countUp(target) {
-    if (reduce) return ticker(target);
-    var start = performance.now();
-    (function step(now) {
-      var p = Math.min(1, (now - start) / 1600);
-      ticker(Math.round(target * (1 - Math.pow(1 - p, 3))));
-      if (p < 1) requestAnimationFrame(step);
-    })(start);
-  }
-  function load(url) { return fetch(url, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw r; return r.json(); }); }
-  load('https://raw.githubusercontent.com/coobyp/coobyp.com/main/stats.json')
-    .catch(function () { return load('stats.json'); })
-    .then(function (d) { if (d && d.total) countUp(d.total); })
-    .catch(function () {});
 
   // copy email
   var out = document.getElementById('copied');
