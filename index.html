@@ -4,223 +4,521 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>coobyp</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="coobyp - music by cooper pulliam. links to everything.">
+<meta name="description" content="coobyp — underground trap out of west tennessee. music, links, contact.">
+<meta name="theme-color" content="#070707">
+<meta property="og:title" content="coobyp">
+<meta property="og:description" content="underground trap out of west tennessee. formerly ninety thousand.">
+<meta property="og:url" content="https://coobyp.com">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23070707'/%3E%3Ctext x='32' y='50' font-family='Impact,sans-serif' font-size='52' text-anchor='middle' fill='%23ff2a2a'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-/* old-school personal homepage: tiled background, one white box in the middle, verdana, blue links */
 :root {
-  --tile-a: #1d3557;
-  --tile-b: #22406a;
-  --box: #ffffff;
-  --text: #000000;
-  --muted: #555555;
-  --bar: #336699;
-  --bar-dark: #003366;
-  --link: #0000cc;
-  --visited: #551a8b;
-  --hover: #cc0000;
-  color-scheme: light;
+  --bg: #070707;
+  --ink: #ece8e1;
+  --dim: #8a857d;
+  --line: #262422;
+  --red: #ff2a2a;
+  --red-deep: #8b0000;
+  --cyan: #2af5ff;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --display: Anton, Impact, "Arial Narrow", sans-serif;
+  color-scheme: dark;
 }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background-color: var(--tile-a);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Crect width='8' height='8' fill='%231d3557'/%3E%3Crect width='4' height='4' fill='%2322406a'/%3E%3Crect x='4' y='4' width='4' height='4' fill='%2322406a'/%3E%3C/svg%3E");
-  color: var(--text);
-  font-family: Verdana, Tahoma, Geneva, sans-serif;
-  font-size: 13px;
-  line-height: 1.45;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 16px 24px;
+  background: var(--bg);
+  color: var(--ink);
+  font: 14px/1.6 var(--mono);
+  overflow-x: hidden;
+  cursor: crosshair;
 }
-a { color: var(--link); }
-a:visited { color: var(--visited); }
-a:hover { color: var(--hover); }
-#main {
-  max-width: 760px;
-  margin: 0 auto;
-  background: var(--box);
-  border: 2px solid #000;
+a { color: inherit; }
+::selection { background: var(--red); color: #000; }
+
+/* ---------- atmosphere ---------- */
+#glow {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 40%), rgba(255, 42, 42, .16), transparent 60%);
+  transition: background .1s;
 }
-#banner {
-  background: var(--bar-dark);
-  border-bottom: 2px solid #000;
-  padding: 18px 14px;
-  color: #fff;
+.grain {
+  position: fixed; inset: -100%; pointer-events: none; z-index: 50; opacity: .09;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1s steps(6) infinite;
 }
-#banner h1 {
-  margin: 0;
-  font-family: "Trebuchet MS", Verdana, sans-serif;
-  font-size: 40px;
-  line-height: 1;
-  letter-spacing: 1px;
-  text-shadow: 2px 2px 0 #000;
+@keyframes grain {
+  0% { transform: translate(0, 0); } 20% { transform: translate(-5%, 3%); } 40% { transform: translate(4%, -6%); }
+  60% { transform: translate(-3%, 7%); } 80% { transform: translate(6%, 2%); } 100% { transform: translate(0, 0); }
 }
-#banner div { font-size: 11px; color: #cfe0f5; margin-top: 4px; }
-#nav { background: #e5e5e5; border-bottom: 1px solid #999; padding: 4px 8px; font-size: 11px; }
-#nav a { font-weight: bold; }
-#cols { display: flex; flex-wrap: wrap; }
-#side {
-  flex: 0 0 200px;
-  background: #eef3fa;
-  border-right: 1px solid #999;
-  padding: 10px;
+.scan {
+  position: fixed; inset: 0; pointer-events: none; z-index: 49;
+  background: repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 2px, rgba(0,0,0,.28) 2px 3px);
 }
-#content { flex: 1 1 360px; min-width: 0; padding: 10px 14px; }
-.hd {
-  background: var(--bar);
-  color: #fff;
-  font-weight: bold;
-  font-size: 12px;
-  padding: 2px 6px;
-  margin: 0 0 6px;
-  border: 1px solid var(--bar-dark);
+.vignette {
+  position: fixed; inset: 0; pointer-events: none; z-index: 48;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.85) 100%);
 }
-.blk { margin-bottom: 16px; }
-#side ul { list-style: square; margin: 0; padding-left: 18px; }
-#side li { margin-bottom: 3px; }
-#side .small { font-size: 10px; color: var(--muted); }
-p { margin: 0 0 8px; }
-table.lnk { border-collapse: collapse; width: 100%; font-size: 12px; }
-table.lnk td { border: 1px solid #bbb; padding: 4px 6px; vertical-align: top; }
-table.lnk tr:nth-child(odd) td { background: #f4f4f4; }
-table.lnk td.u { color: var(--muted); }
-.embed iframe { display: block; width: 100%; height: 166px; border: 1px solid #999; margin: 6px 0; }
-#footer {
-  border-top: 2px solid #000;
-  background: #e5e5e5;
-  text-align: center;
-  font-size: 10px;
-  color: var(--muted);
-  padding: 6px 8px;
+
+/* ---------- top bar ---------- */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 40;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 14px max(16px, env(safe-area-inset-left)) 14px max(16px, env(safe-area-inset-right));
+  font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+  mix-blend-mode: difference;
 }
-button { font: 11px Verdana, Tahoma, sans-serif; }
-@media (max-width: 560px) {
-  #side { flex-basis: 100%; border-right: 0; border-bottom: 1px solid #999; }
-  #banner h1 { font-size: 32px; }
+header nav { display: flex; gap: 18px; }
+header a { text-decoration: none; }
+header a:hover { color: var(--red); }
+.rec { display: inline-flex; align-items: center; gap: 8px; }
+.rec::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--red);
+  box-shadow: 0 0 10px var(--red); animation: blink 1.4s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- hero ---------- */
+main { position: relative; z-index: 1; }
+.hero {
+  min-height: 100svh;
+  display: grid; place-items: center; text-align: center;
+  padding: 80px 16px 60px;
+  position: relative;
+}
+.word {
+  position: relative; margin: 0;
+  font: 400 clamp(84px, 24vw, 340px)/.82 var(--display);
+  letter-spacing: -.01em; text-transform: uppercase;
+  color: var(--ink);
+  user-select: none;
+}
+.word::before, .word::after {
+  content: attr(data-text); position: absolute; inset: 0;
+  mix-blend-mode: screen; pointer-events: none;
+}
+.word::before { color: var(--red); animation: glitch-a 3.2s infinite steps(1); }
+.word::after  { color: var(--cyan); animation: glitch-b 2.7s infinite steps(1); opacity: .7; }
+.word span { position: relative; z-index: 1; }
+@keyframes glitch-a {
+  0%, 88%, 100% { transform: translate(0); clip-path: inset(0 0 0 0); opacity: 0; }
+  89% { transform: translate(-6px, 2px); clip-path: inset(10% 0 62% 0); opacity: 1; }
+  91% { transform: translate(5px, -2px); clip-path: inset(55% 0 20% 0); opacity: 1; }
+  93% { transform: translate(-3px, 0); clip-path: inset(30% 0 40% 0); opacity: 1; }
+  95% { opacity: 0; }
+}
+@keyframes glitch-b {
+  0%, 80%, 100% { transform: translate(0); clip-path: inset(0 0 0 0); opacity: 0; }
+  81% { transform: translate(6px, -1px); clip-path: inset(70% 0 5% 0); opacity: .7; }
+  83% { transform: translate(-4px, 3px); clip-path: inset(5% 0 75% 0); opacity: .7; }
+  85% { opacity: 0; }
+}
+.word.hit::before { animation: none; opacity: 1; transform: translate(-8px, 3px); clip-path: inset(20% 0 45% 0); }
+.word.hit::after  { animation: none; opacity: .8; transform: translate(8px, -3px); clip-path: inset(60% 0 10% 0); }
+.sub {
+  margin-top: 26px; font-size: clamp(12px, 1.6vw, 16px); letter-spacing: .28em; text-transform: uppercase; color: var(--dim);
+}
+.sub b { color: var(--red); font-weight: 400; }
+.cta {
+  margin-top: 34px; display: inline-flex; align-items: center; gap: 12px;
+  padding: 14px 26px; border: 1px solid var(--ink); background: transparent; color: var(--ink);
+  font: 700 12px var(--mono); letter-spacing: .3em; text-transform: uppercase; text-decoration: none;
+  cursor: pointer; position: relative; overflow: hidden;
+  transition: color .2s;
+}
+.cta::before {
+  content: ""; position: absolute; inset: 0; background: var(--red); transform: translateX(-101%);
+  transition: transform .25s cubic-bezier(.7,0,.3,1); z-index: -1;
+}
+.cta:hover { color: #000; border-color: var(--red); }
+.cta:hover::before { transform: translateX(0); }
+.scroll-hint {
+  position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
+  font-size: 10px; letter-spacing: .3em; color: var(--dim); text-transform: uppercase;
+  animation: bob 2s ease-in-out infinite;
+}
+@keyframes bob { 50% { transform: translate(-50%, 6px); } }
+
+/* ---------- ticker ---------- */
+.ticker {
+  border-block: 1px solid var(--line); overflow: hidden; white-space: nowrap;
+  background: var(--red); color: #000;
+  font: 400 clamp(22px, 4vw, 38px)/1 var(--display); text-transform: uppercase;
+  padding: 12px 0; transform: rotate(-1.5deg) scale(1.04); margin: 30px 0 60px;
+  display: block; text-decoration: none;
+}
+.ticker div { display: inline-block; animation: tick 28s linear infinite; }
+.ticker span { padding: 0 .6em; }
+.ticker span:nth-child(3n+2) { -webkit-text-stroke: 1px #000; color: transparent; }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+/* ---------- sections ---------- */
+section { scroll-margin-top: 30px; max-width: 1100px; margin: 0 auto; padding: 60px max(16px, env(safe-area-inset-left)) 60px max(16px, env(safe-area-inset-right)); }
+.label {
+  display: flex; align-items: baseline; gap: 14px; margin: 0 0 28px;
+  font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--dim);
+}
+.label i { font-style: normal; color: var(--red); }
+.label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+h2 {
+  font: 400 clamp(48px, 9vw, 110px)/.9 var(--display); text-transform: uppercase; margin: 0 0 30px;
+}
+h2 .o { color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
+
+/* ---------- player ---------- */
+.player {
+  border: 1px solid var(--line); background: rgba(12, 12, 12, .85);
+  display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center;
+  padding: 24px; position: relative;
+}
+.player::before {
+  content: "PLAYER.EXE"; position: absolute; top: -9px; left: 16px; padding: 0 8px;
+  background: var(--bg); font-size: 10px; letter-spacing: .3em; color: var(--dim);
+}
+.pbtn {
+  width: 96px; height: 96px; border-radius: 50%; border: 2px solid var(--red);
+  background: transparent; color: var(--red); cursor: pointer; display: grid; place-items: center;
+  transition: background .2s, color .2s, box-shadow .2s;
+}
+.pbtn:hover, .pbtn.on { background: var(--red); color: #000; box-shadow: 0 0 40px rgba(255, 42, 42, .5); }
+.pbtn svg { width: 34px; height: 34px; fill: currentColor; }
+.pbtn .pause { display: none; }
+.pbtn.on .play { display: none; }
+.pbtn.on .pause { display: block; }
+.ptitle { font: 400 clamp(22px, 3.4vw, 34px)/1.05 var(--display); text-transform: uppercase; margin: 0 0 4px; overflow-wrap: anywhere; }
+.pmeta { color: var(--dim); font-size: 12px; margin-bottom: 14px; }
+.viz { display: flex; align-items: flex-end; gap: 3px; height: 54px; margin-bottom: 12px; }
+.viz i { flex: 1; background: var(--red); height: 6%; transition: height .09s linear; opacity: .9; }
+.bar { height: 4px; background: var(--line); cursor: pointer; position: relative; }
+.bar b { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--ink); }
+.prow { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; font-size: 11px; color: var(--dim); gap: 10px; flex-wrap: wrap; }
+.prow button, .prow .btn {
+  text-decoration: none; background: none; border: 1px solid var(--line); color: var(--ink); font: 11px var(--mono);
+  letter-spacing: .15em; padding: 6px 12px; cursor: pointer; text-transform: uppercase;
+}
+.prow button:hover, .prow .btn:hover { border-color: var(--red); color: var(--red); }
+.prow .ctl { display: flex; gap: 8px; }
+#scwrap { position: absolute; width: 0; height: 0; overflow: hidden; }
+.player.fallback #scwrap { position: static; width: auto; height: auto; }
+#sc { position: absolute; width: 300px; height: 166px; left: -9999px; top: 0; border: 0; }
+.player.fallback { display: block; }
+.player.fallback > *:not(#sc) { display: none; }
+.player.fallback #sc { position: static; width: 100%; height: 400px; }
+
+/* ---------- links ---------- */
+.links { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); counter-reset: n; }
+.links li { border-bottom: 1px solid var(--line); counter-increment: n; }
+.links a {
+  display: grid; grid-template-columns: 56px 1fr auto auto; align-items: center; gap: 16px;
+  padding: 18px 8px; text-decoration: none; position: relative; overflow: hidden;
+  transition: color .15s, padding .25s;
+}
+.links a::before {
+  content: counter(n, decimal-leading-zero); font-size: 11px; color: var(--dim); letter-spacing: .1em;
+}
+.links a::after {
+  content: ""; position: absolute; inset: 0; background: var(--ink); z-index: -1;
+  transform: scaleY(0); transform-origin: bottom; transition: transform .25s cubic-bezier(.7,0,.3,1);
+}
+.links .nm { font: 400 clamp(30px, 6vw, 64px)/1 var(--display); text-transform: uppercase; }
+.links .hd { font-size: 12px; color: var(--dim); }
+.links .ar { font-size: 22px; transition: transform .25s; }
+.links a:hover { color: #000; padding-left: 20px; }
+.links a:hover::after { transform: scaleY(1); }
+.links a:hover::before, .links a:hover .hd { color: #333; }
+.links a:hover .ar { transform: rotate(-45deg); color: var(--red); }
+
+/* ---------- about ---------- */
+.about { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.file { border: 1px solid var(--line); padding: 20px; background: rgba(12,12,12,.85); font-size: 13px; }
+.file div { display: grid; grid-template-columns: 110px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); }
+.file div:last-child { border: 0; }
+.file dt, .file span:first-child { color: var(--dim); text-transform: uppercase; letter-spacing: .15em; font-size: 11px; }
+.redact { background: var(--ink); color: transparent; user-select: none; transition: background .3s, color .3s; cursor: help; }
+.redact:hover { background: transparent; color: var(--red); }
+.blurb { font-size: 15px; color: var(--ink); }
+.blurb p { margin: 0 0 16px; }
+.blurb em { color: var(--red); font-style: normal; }
+
+/* ---------- contact ---------- */
+.mail {
+  display: inline-block; font: 400 clamp(32px, 7.5vw, 96px)/1 var(--display); text-transform: lowercase;
+  text-decoration: none; border-bottom: 3px solid var(--red); overflow-wrap: anywhere;
+  transition: color .2s;
+}
+.mail:hover { color: var(--red); }
+.copy { margin-left: 4px; }
+#copied { color: var(--red); font-size: 12px; letter-spacing: .2em; margin-left: 12px; }
+
+footer {
+  position: relative; z-index: 1; border-top: 1px solid var(--line); margin-top: 60px;
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  padding: 20px max(16px, env(safe-area-inset-left)) calc(20px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-right));
+  font-size: 11px; color: var(--dim); letter-spacing: .15em; text-transform: uppercase;
+}
+
+/* ---------- 90,000 easter egg ---------- */
+#chant {
+  position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; pointer-events: none;
+  background: var(--red); color: #000; opacity: 0; visibility: hidden;
+  font: 400 clamp(60px, 18vw, 260px)/.85 var(--display); text-align: center; text-transform: uppercase;
+}
+#chant.on { animation: chant 1.6s steps(1) forwards; visibility: visible; }
+@keyframes chant {
+  0% { opacity: 1; } 10% { opacity: 0; } 15% { opacity: 1; } 25% { opacity: 0; } 30% { opacity: 1; }
+  85% { opacity: 1; } 100% { opacity: 0; }
+}
+
+/* ---------- reveal ---------- */
+.rv { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s cubic-bezier(.2,.7,.2,1); }
+.rv.in { opacity: 1; transform: none; }
+
+@media (max-width: 720px) {
+  header nav { gap: 12px; }
+  header .rec span { display: none; }
+  .word { font-size: 27vw; }
+  .player { grid-template-columns: 1fr; justify-items: start; }
+  .about { grid-template-columns: 1fr; }
+  .links a { grid-template-columns: 34px 1fr auto; padding: 16px 4px; }
+  .links .hd { display: none; }
+  .file div { grid-template-columns: 90px 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .rv { opacity: 1; transform: none; }
 }
 </style>
 </head>
 <body>
-<div id="main">
+<div id="glow"></div>
+<div class="grain"></div>
+<div class="scan"></div>
+<div class="vignette"></div>
 
-  <div id="banner">
-    <h1>coobyp</h1>
-    <div>the official site of coobyp (cooper pulliam)</div>
-  </div>
+<header>
+  <a href="#top" class="rec"><span>coobyp</span>&nbsp;live</a>
+  <nav>
+    <a href="#about">about</a>
+    <a href="#music">music</a>
+    <a href="#links">links</a>
+    <a href="#contact">contact</a>
+  </nav>
+</header>
 
-  <div id="nav">
-    <a href="#music">music</a> | <a href="#links">links</a> | <a href="#about">about</a> | <a href="#contact">contact</a>
-  </div>
-
-  <div id="cols">
-    <div id="side">
-      <div class="blk">
-        <div class="hd">:: links ::</div>
-        <ul>
-          <li><a href="https://soundcloud.com/coobyp" target="_blank" rel="noopener">soundcloud</a></li>
-          <li><a href="https://www.youtube.com/@coobyp" target="_blank" rel="noopener">youtube</a></li>
-          <li><a href="https://www.instagram.com/coobyp" target="_blank" rel="noopener">instagram</a></li>
-          <li><a href="https://x.com/coobyp" target="_blank" rel="noopener">x / twitter</a></li>
-          <li><a href="https://www.snapchat.com/add/coobyp" target="_blank" rel="noopener">snapchat</a></li>
-          <li><a href="https://bsky.app/profile/pulliam.biz" target="_blank" rel="noopener">bluesky</a></li>
-          <li><a href="https://github.com/coobyp" target="_blank" rel="noopener">github</a></li>
-        </ul>
-      </div>
-      <div class="blk">
-        <div class="hd">:: contact ::</div>
-        <p style="font-size:11px;word-break:break-all;">me@coobyp.com</p>
-      </div>
-      <div class="blk">
-        <div class="hd">:: site info ::</div>
-        <p class="small">updated: 10/26/2026<br>you've been here <b id="visits">1</b> time(s)<br>best viewed at 1024x768</p>
-      </div>
+<main id="top">
+  <div class="hero">
+    <div>
+      <h1 class="word" id="word" data-text="coobyp"><span>coobyp</span></h1>
+      <div class="sub"><b>all plats, baby come n slide wimmie, feel me?</b></div>
+      <a class="cta" href="#music">▶ press play</a>
     </div>
+    <div class="scroll-hint">scroll ↓</div>
+  </div>
 
-    <div id="content">
-      <div class="blk">
-        <div class="hd">welcome</div>
-        <p>welcome to my site. i make music as coobyp. all my links are here.</p>
-      </div>
-
-      <div class="blk" id="music">
-        <div class="hd">music</div>
-        <p>everything is on soundcloud: <a href="https://soundcloud.com/coobyp" target="_blank" rel="noopener">soundcloud.com/coobyp</a></p>
-        <div class="embed" id="embed"></div>
-      </div>
-
-      <div class="blk" id="links">
-        <div class="hd">find me</div>
-        <table class="lnk">
-          <tr><td><a href="https://soundcloud.com/coobyp" target="_blank" rel="noopener">SoundCloud</a></td><td class="u">soundcloud.com/coobyp</td></tr>
-          <tr><td><a href="https://www.youtube.com/@coobyp" target="_blank" rel="noopener">YouTube</a></td><td class="u">@coobyp</td></tr>
-          <tr><td><a href="https://www.instagram.com/coobyp" target="_blank" rel="noopener">Instagram</a></td><td class="u">@coobyp</td></tr>
-          <tr><td><a href="https://x.com/coobyp" target="_blank" rel="noopener">X</a></td><td class="u">@coobyp</td></tr>
-          <tr><td><a href="https://www.snapchat.com/add/coobyp" target="_blank" rel="noopener">Snapchat</a></td><td class="u">coobyp</td></tr>
-          <tr><td><a href="https://bsky.app/profile/pulliam.biz" target="_blank" rel="noopener">Bluesky</a></td><td class="u">@pulliam.biz</td></tr>
-          <tr><td><a href="https://github.com/coobyp" target="_blank" rel="noopener">GitHub</a></td><td class="u">coobyp</td></tr>
-          <tr><td><a href="https://pulliam.biz" target="_blank" rel="noopener">Pulliam Operations</a></td><td class="u">my computer repair business</td></tr>
-        </table>
-      </div>
-
-      <div class="blk" id="about">
-        <div class="hd">about</div>
-        <p>name: cooper pulliam (cooby)<br>
-        from: west tennessee<br>
-        used to go by: ninety thousand<br>
-        day job: it / computer repair</p>
-      </div>
-
-      <div class="blk" id="contact">
-        <div class="hd">contact</div>
-        <p>email: <b id="email">me@coobyp.com</b> <button type="button" id="copy">copy</button> <span id="copied"></span></p>
-      </div>
+  <a class="ticker" href="https://discord.gg/coobyp" target="_blank" rel="noopener" aria-label="become a part of cooby's corner on discord">
+    <div aria-hidden="true">
+      <span>become a part of cooby's corner</span><span>join the discord</span><span>✦</span>
+      <span>become a part of cooby's corner</span><span>join the discord</span><span>✦</span>
+      <span>become a part of cooby's corner</span><span>join the discord</span><span>✦</span>
+      <span>become a part of cooby's corner</span><span>join the discord</span><span>✦</span>
     </div>
-  </div>
+  </a>
 
-  <div id="footer">
-    &copy; <span id="yr">2026</span> coobyp &nbsp;|&nbsp; no ads, no tracking &nbsp;|&nbsp; <a href="#main">back to top</a>
-  </div>
-</div>
+  <section id="about" class="rv">
+    <div class="label"><i>01</i> about</div>
+    <div class="about">
+      <div class="blurb">
+        <h2>i <span class="o">am</span></h2>
+        <p>an artist first and foremost. been making music over 10 years and won't ever stop. if i'm not listening to or making it, i'm discussing music or fixin 'puters. tech, women and music are what i live. love everybody on da earf. peace and love forever.</p>
+      </div>
+      <dl class="file" style="margin:0">
+        <div><span>name</span><span>cooper pulliam</span></div>
+        <div><span>alias</span><span>coobyp / cooby</span></div>
+        <div><span>prev</span><span>ninety thousand</span></div>
+        <div><span>from</span><span>west tennessee</span></div>
+        <div><span>genre</span><span>underground trap</span></div>
+        <div><span>day job</span><span>it / computer repair</span></div>
+        <div><span>next drop</span><span class="redact" title="classified">soon. stay tapped in.</span></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="music" class="rv">
+    <div class="label"><i>02</i> music</div>
+    <h2>feel <span class="o">me</span></h2>
+    <div class="player" id="player">
+      <button class="pbtn" id="pbtn" type="button" aria-label="play">
+        <svg class="play" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>
+        <svg class="pause" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+      </button>
+      <div style="min-width:0;width:100%">
+        <p class="ptitle" id="ptitle">coobyp</p>
+        <div class="pmeta" id="pmeta">streaming from soundcloud</div>
+        <div class="viz" id="viz"></div>
+        <div class="bar" id="bar"><b id="prog"></b></div>
+        <div class="prow">
+          <span id="ptime">0:00 / 0:00</span>
+          <span class="ctl">
+            <button type="button" id="prev">prev</button>
+            <button type="button" id="next">next</button>
+            <a class="btn" href="https://soundcloud.com/coobyp" target="_blank" rel="noopener">open sc ↗</a>
+          </span>
+        </div>
+      </div>
+      <div id="scwrap"></div>
+    </div>
+  </section>
+
+  <section id="links" class="rv">
+    <div class="label"><i>03</i> links</div>
+    <ul class="links">
+      <li><a href="https://soundcloud.com/coobyp" target="_blank" rel="noopener"><span class="nm">soundcloud</span><span class="hd">/coobyp</span><span class="ar">→</span></a></li>
+      <li><a href="https://www.youtube.com/@coobyp" target="_blank" rel="noopener"><span class="nm">youtube</span><span class="hd">@coobyp</span><span class="ar">→</span></a></li>
+      <li><a href="https://www.instagram.com/coobyp" target="_blank" rel="noopener"><span class="nm">instagram</span><span class="hd">@coobyp</span><span class="ar">→</span></a></li>
+      <li><a href="https://x.com/coobyp" target="_blank" rel="noopener"><span class="nm">x</span><span class="hd">@coobyp</span><span class="ar">→</span></a></li>
+      <li><a href="https://www.snapchat.com/add/coobyp" target="_blank" rel="noopener"><span class="nm">snapchat</span><span class="hd">coobyp</span><span class="ar">→</span></a></li>
+      <li><a href="https://bsky.app/profile/coobyp.com" target="_blank" rel="noopener"><span class="nm">bluesky</span><span class="hd">@coobyp.com</span><span class="ar">→</span></a></li>
+      <li><a href="https://github.com/coobyp" target="_blank" rel="noopener"><span class="nm">github</span><span class="hd">coobyp</span><span class="ar">→</span></a></li>
+    </ul>
+  </section>
+
+  <section id="contact" class="rv">
+    <div class="label"><i>04</i> contact</div>
+    <p style="color:var(--dim);margin:0 0 18px">booking, features, collabs, whatever:</p>
+    <a class="mail" id="email" href="mailto:me@coobyp.com">me@coobyp.com</a>
+    <div style="margin-top:18px">
+      <button class="cta copy" type="button" id="copy" style="margin-top:0">copy email</button>
+      <span id="copied"></span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>&copy; <span id="yr">2026</span> coobyp</span>
+  <span>no ads / no tracking</span>
+  <span>psst: type 90000</span>
+</footer>
+
+<div id="chant" aria-hidden="true">ninety<br>thousand</div>
 
 <script>
 (function () {
-  var yr = document.getElementById('yr');
-  if (yr) yr.textContent = new Date().getFullYear();
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('yr').textContent = new Date().getFullYear();
 
-  // your own visit count, kept in your browser only
-  try {
-    var n = parseInt(localStorage.getItem('coobyp_visits') || '0', 10) + 1;
-    localStorage.setItem('coobyp_visits', String(n));
-    document.getElementById('visits').textContent = n;
-  } catch (e) {}
+  // red glow follows the cursor
+  var root = document.documentElement;
+  window.addEventListener('pointermove', function (e) {
+    root.style.setProperty('--mx', e.clientX + 'px');
+    root.style.setProperty('--my', e.clientY + 'px');
+  }, { passive: true });
 
-  // soundcloud player only on the real site (previews block embeds)
-  var host = location.hostname || '';
-  var ok = /(^|\.)coobyp\.com$/.test(host) || /github\.io$/.test(host) || /pages\.dev$/.test(host) || host === 'localhost' || host === '127.0.0.1';
-  var box = document.getElementById('embed');
-  if (box && ok) {
-    var f = document.createElement('iframe');
-    f.title = 'coobyp on soundcloud';
-    f.loading = 'lazy';
-    f.allow = 'autoplay';
-    f.src = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent('https://soundcloud.com/coobyp') +
-      '&color=%23336699&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&visual=false';
-    box.appendChild(f);
+  // wordmark glitches harder on hover / tap
+  var word = document.getElementById('word');
+  function hit() {
+    word.classList.add('hit');
+    setTimeout(function () { word.classList.remove('hit'); }, 140);
   }
+  word.addEventListener('pointerenter', hit);
+  word.addEventListener('click', hit);
 
-  var btn = document.getElementById('copy');
-  var out = document.getElementById('copied');
-  if (btn) btn.addEventListener('click', function () {
-    function fallback() {
-      var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      out.textContent = '(selected)';
+  // reveal sections on scroll
+  var rv = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .12 });
+    rv.forEach(function (el) { io.observe(el); });
+  } else rv.forEach(function (el) { el.classList.add('in'); });
+
+  // type 90000 anywhere
+  var buf = '', chant = document.getElementById('chant');
+  window.addEventListener('keydown', function (e) {
+    buf = (buf + e.key).slice(-5);
+    if (buf === '90000') {
+      chant.classList.remove('on'); void chant.offsetWidth; chant.classList.add('on');
+      buf = '';
     }
-    try {
-      navigator.clipboard.writeText('me@coobyp.com').then(function () { out.textContent = '(copied)'; }, fallback);
-    } catch (e) { fallback(); }
   });
+
+  // copy email
+  var out = document.getElementById('copied');
+  document.getElementById('copy').addEventListener('click', function () {
+    function done(t) { out.textContent = t; setTimeout(function () { out.textContent = ''; }, 2000); }
+    try { navigator.clipboard.writeText('me@coobyp.com').then(function () { done('copied'); }, function () { done('me@coobyp.com'); }); }
+    catch (e) { done('me@coobyp.com'); }
+  });
+
+  // ---------- player: custom controls over the soundcloud widget ----------
+  var viz = document.getElementById('viz'), bars = [];
+  for (var i = 0; i < 48; i++) { var b = document.createElement('i'); viz.appendChild(b); bars.push(b); }
+  var playing = false, t = 0;
+  // soundcloud doesn't expose audio data cross-origin, so the bars are a beat-ish animation tied to play state
+  function frame() {
+    t += 1;
+    for (var k = 0; k < bars.length; k++) {
+      var h = playing
+        ? 12 + Math.abs(Math.sin(t * .09 + k * .5)) * 45 + Math.random() * 38 * (k < 10 ? 1.2 : .8) + (t % 22 < 3 ? 25 : 0)
+        : 6 + Math.abs(Math.sin(t * .02 + k * .3)) * 6;
+      bars[k].style.height = Math.min(100, h) + '%';
+    }
+    if (!reduce) setTimeout(function () { requestAnimationFrame(frame); }, 70);
+  }
+  frame();
+
+  var host = location.hostname || '';
+  var ok = /(^|\.)coobyp\.com$/.test(host) || /github\.io$/.test(host) || host === 'localhost' || host === '127.0.0.1';
+  var player = document.getElementById('player');
+  var pbtn = document.getElementById('pbtn');
+  if (!ok) { pbtn.disabled = true; document.getElementById('pmeta').textContent = 'player loads on coobyp.com'; return; }
+
+  var f = document.createElement('iframe');
+  f.id = 'sc'; f.title = 'coobyp on soundcloud'; f.allow = 'autoplay';
+  f.src = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent('https://soundcloud.com/coobyp') +
+    '&color=%23ff2a2a&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&visual=true';
+  document.getElementById('scwrap').appendChild(f);
+
+  function fmt(ms) { var s = Math.floor(ms / 1000); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
+  function fallback() { player.classList.add('fallback'); }
+
+  var s = document.createElement('script');
+  s.src = 'https://w.soundcloud.com/player/api.js';
+  s.onerror = fallback;
+  var timer = setTimeout(fallback, 8000);
+  s.onload = function () {
+    var w = SC.Widget(f), E = SC.Widget.Events, dur = 0;
+    var title = document.getElementById('ptitle'), meta = document.getElementById('pmeta');
+    var prog = document.getElementById('prog'), time = document.getElementById('ptime');
+    function sound() {
+      w.getCurrentSound(function (x) {
+        if (!x) return;
+        title.textContent = x.title || 'coobyp';
+        meta.textContent = (x.user && x.user.username ? x.user.username : 'coobyp') + (x.genre ? ' / ' + x.genre : '');
+        dur = x.duration || 0;
+        if (!playing) time.textContent = '0:00 / ' + fmt(dur);
+      });
+    }
+    w.bind(E.READY, function () { clearTimeout(timer); sound(); });
+    w.bind(E.PLAY, function () { playing = true; pbtn.classList.add('on'); pbtn.setAttribute('aria-label', 'pause'); sound(); });
+    w.bind(E.PAUSE, function () { playing = false; pbtn.classList.remove('on'); pbtn.setAttribute('aria-label', 'play'); });
+    w.bind(E.FINISH, function () { playing = false; pbtn.classList.remove('on'); });
+    w.bind(E.PLAY_PROGRESS, function (p) {
+      prog.style.width = (p.relativePosition * 100) + '%';
+      time.textContent = fmt(p.currentPosition) + ' / ' + fmt(dur);
+    });
+    pbtn.addEventListener('click', function () { w.toggle(); });
+    document.getElementById('next').addEventListener('click', function () { w.next(); });
+    document.getElementById('prev').addEventListener('click', function () { w.prev(); });
+    document.getElementById('bar').addEventListener('click', function (e) {
+      var r = this.getBoundingClientRect();
+      if (dur) w.seekTo(dur * (e.clientX - r.left) / r.width);
+    });
+    document.querySelector('.hero .cta').addEventListener('click', function () { if (!playing) w.play(); });
+  };
+  document.head.appendChild(s);
 })();
 </script>
 </body>
