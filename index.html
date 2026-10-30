@@ -119,7 +119,7 @@ main { position: relative; z-index: 1; }
 .word.hit::before { animation: none; opacity: 1; transform: translate(-8px, 3px); clip-path: inset(20% 0 45% 0); }
 .word.hit::after  { animation: none; opacity: .8; transform: translate(8px, -3px); clip-path: inset(60% 0 10% 0); }
 .sub {
-  margin-top: 26px; font-size: 12px; letter-spacing: .32em; text-transform: uppercase; color: var(--dim);
+  margin-top: 26px; font-size: clamp(12px, 1.6vw, 16px); letter-spacing: .28em; text-transform: uppercase; color: var(--dim);
 }
 .sub b { color: var(--red); font-weight: 400; }
 .cta {
@@ -148,10 +148,12 @@ main { position: relative; z-index: 1; }
   background: var(--red); color: #000;
   font: 400 clamp(22px, 4vw, 38px)/1 var(--display); text-transform: uppercase;
   padding: 12px 0; transform: rotate(-1.5deg) scale(1.04); margin: 30px 0 60px;
+  display: block; text-decoration: none;
 }
+.ticker b { font-weight: 400; color: #fff; -webkit-text-stroke: 0; }
 .ticker div { display: inline-block; animation: tick 28s linear infinite; }
 .ticker span { padding: 0 .6em; }
-.ticker span:nth-child(even) { -webkit-text-stroke: 1px #000; color: transparent; }
+.ticker span:nth-child(3n+2) { -webkit-text-stroke: 1px #000; color: transparent; }
 @keyframes tick { to { transform: translateX(-50%); } }
 
 /* ---------- sections ---------- */
@@ -300,9 +302,9 @@ footer {
 <header>
   <a href="#top" class="rec"><span>coobyp</span>&nbsp;live</a>
   <nav>
+    <a href="#about">about</a>
     <a href="#music">music</a>
     <a href="#links">links</a>
-    <a href="#about">about</a>
     <a href="#contact">contact</a>
   </nav>
 </header>
@@ -311,22 +313,38 @@ footer {
   <div class="hero">
     <div>
       <h1 class="word" id="word" data-text="coobyp"><span>coobyp</span></h1>
-      <div class="sub">underground trap &nbsp;/&nbsp; west tennessee &nbsp;/&nbsp; <b>formerly ninety thousand</b></div>
+      <div class="sub"><b>all plats, baby come n slide wimmie, feel me?</b></div>
       <a class="cta" href="#music">▶ press play</a>
     </div>
     <div class="scroll-hint">scroll ↓</div>
   </div>
 
-  <div class="ticker" aria-hidden="true">
-    <div>
-      <span>coobyp</span><span>new music on soundcloud</span><span>✦</span><span>90,000</span><span>west tennessee</span><span>✦</span>
-      <span>coobyp</span><span>new music on soundcloud</span><span>✦</span><span>90,000</span><span>west tennessee</span><span>✦</span>
+  <a class="ticker" href="#links" aria-label="coobians and counting. join us">
+    <div id="tick"></div>
+  </a>
+
+  <section id="about" class="rv">
+    <div class="label"><i>01</i> about</div>
+    <div class="about">
+      <div class="blurb">
+        <h2>i <span class="o">am</span></h2>
+        <p>an artist first and foremost. been making music over 10 years and won't ever stop. if i'm not listening to or making it, i'm discussing music or fixin 'puters. tech, women and music are what i live. love everybody on da earf. peace and love forever.</p>
+      </div>
+      <dl class="file" style="margin:0">
+        <div><span>name</span><span>cooper pulliam</span></div>
+        <div><span>alias</span><span>coobyp / cooby</span></div>
+        <div><span>prev</span><span>ninety thousand</span></div>
+        <div><span>from</span><span>west tennessee</span></div>
+        <div><span>genre</span><span>underground trap</span></div>
+        <div><span>day job</span><span>it / computer repair</span></div>
+        <div><span>next drop</span><span class="redact" title="classified">soon. stay tapped in.</span></div>
+      </dl>
     </div>
-  </div>
+  </section>
 
   <section id="music" class="rv">
-    <div class="label"><i>01</i> music</div>
-    <h2>turn it <span class="o">up</span></h2>
+    <div class="label"><i>02</i> music</div>
+    <h2>feel <span class="o">me</span></h2>
     <div class="player" id="player">
       <button class="pbtn" id="pbtn" type="button" aria-label="play">
         <svg class="play" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>
@@ -351,38 +369,16 @@ footer {
   </section>
 
   <section id="links" class="rv">
-    <div class="label"><i>02</i> links</div>
+    <div class="label"><i>03</i> links</div>
     <ul class="links">
       <li><a href="https://soundcloud.com/coobyp" target="_blank" rel="noopener"><span class="nm">soundcloud</span><span class="hd">/coobyp</span><span class="ar">→</span></a></li>
       <li><a href="https://www.youtube.com/@coobyp" target="_blank" rel="noopener"><span class="nm">youtube</span><span class="hd">@coobyp</span><span class="ar">→</span></a></li>
       <li><a href="https://www.instagram.com/coobyp" target="_blank" rel="noopener"><span class="nm">instagram</span><span class="hd">@coobyp</span><span class="ar">→</span></a></li>
       <li><a href="https://x.com/coobyp" target="_blank" rel="noopener"><span class="nm">x</span><span class="hd">@coobyp</span><span class="ar">→</span></a></li>
       <li><a href="https://www.snapchat.com/add/coobyp" target="_blank" rel="noopener"><span class="nm">snapchat</span><span class="hd">coobyp</span><span class="ar">→</span></a></li>
-      <li><a href="https://bsky.app/profile/pulliam.biz" target="_blank" rel="noopener"><span class="nm">bluesky</span><span class="hd">@pulliam.biz</span><span class="ar">→</span></a></li>
+      <li><a href="https://bsky.app/profile/coobyp.com" target="_blank" rel="noopener"><span class="nm">bluesky</span><span class="hd">@coobyp.com</span><span class="ar">→</span></a></li>
       <li><a href="https://github.com/coobyp" target="_blank" rel="noopener"><span class="nm">github</span><span class="hd">coobyp</span><span class="ar">→</span></a></li>
-      <li><a href="https://pulliam.biz" target="_blank" rel="noopener"><span class="nm">pulliam ops</span><span class="hd">computer repair</span><span class="ar">→</span></a></li>
     </ul>
-  </section>
-
-  <section id="about" class="rv">
-    <div class="label"><i>03</i> about</div>
-    <div class="about">
-      <div class="blurb">
-        <h2>who <span class="o">dis</span></h2>
-        <p>cooper pulliam. makes gritty, high-energy underground trap as <em>coobyp</em>.</p>
-        <p>you might remember the <em>90,000</em> chant. that was me as ninety thousand. same guy, new name.</p>
-        <p>when i'm not making music i fix computers.</p>
-      </div>
-      <dl class="file" style="margin:0">
-        <div><span>name</span><span>cooper pulliam</span></div>
-        <div><span>alias</span><span>coobyp / cooby</span></div>
-        <div><span>prev</span><span>ninety thousand</span></div>
-        <div><span>from</span><span>west tennessee</span></div>
-        <div><span>genre</span><span>underground trap</span></div>
-        <div><span>day job</span><span>it / computer repair</span></div>
-        <div><span>next drop</span><span class="redact" title="classified">soon. stay tapped in.</span></div>
-      </dl>
-    </div>
   </section>
 
   <section id="contact" class="rv">
@@ -443,6 +439,29 @@ footer {
       buf = '';
     }
   });
+
+  // coobian count: stats.json is refreshed every few hours by the github action.
+  // raw.githubusercontent picks up new numbers without waiting for a pages rebuild.
+  var tick = document.getElementById('tick');
+  function ticker(n) {
+    var one = '<span>' + (n == null ? '' : '<b class="ct">' + n.toLocaleString() + '</b> ') + 'coobians &amp; counting</span><span>join us</span><span>✦</span>';
+    tick.innerHTML = new Array(9).join(one);
+  }
+  ticker(null);
+  function countUp(target) {
+    if (reduce) return ticker(target);
+    var start = performance.now();
+    (function step(now) {
+      var p = Math.min(1, (now - start) / 1600);
+      ticker(Math.round(target * (1 - Math.pow(1 - p, 3))));
+      if (p < 1) requestAnimationFrame(step);
+    })(start);
+  }
+  function load(url) { return fetch(url, { cache: 'no-store' }).then(function (r) { if (!r.ok) throw r; return r.json(); }); }
+  load('https://raw.githubusercontent.com/coobyp/coobyp.com/main/stats.json')
+    .catch(function () { return load('stats.json'); })
+    .then(function (d) { if (d && d.total) countUp(d.total); })
+    .catch(function () {});
 
   // copy email
   var out = document.getElementById('copied');
