@@ -247,6 +247,30 @@ h2 .o { color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
 .links a:hover::before, .links a:hover .hd { color: #333; }
 .links a:hover .ar { transform: rotate(-45deg); color: var(--red); }
 
+/* ---------- merch ---------- */
+.merch { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+.tee { background: radial-gradient(circle at 50% 45%, rgba(255, 42, 42, .14), transparent 65%); border: 1px solid var(--line); padding: 24px; }
+.tee svg { display: block; width: 100%; max-width: 420px; margin: 0 auto; }
+.tee .cloth { transition: fill .3s; }
+.tee .ink { font: 400 66px var(--display); transition: fill .3s; }
+.tee[data-c="black"] .cloth { fill: #111; stroke: #333; stroke-width: 2; }
+.tee[data-c="black"] .collar { stroke: #000; }
+.tee[data-c="black"] .ink { fill: #e3001b; }
+.tee[data-c="white"] .cloth { fill: #f4f4f4; stroke: #ccc; stroke-width: 2; }
+.tee[data-c="white"] .collar { stroke: #ddd; }
+.tee[data-c="white"] .ink { fill: #000; }
+.buy .tag { color: var(--dim); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; margin: 0 0 20px; }
+.swatch { display: flex; gap: 10px; flex-wrap: wrap; }
+.swatch button {
+  display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer;
+  background: none; border: 1px solid var(--line); color: var(--ink); font: 12px var(--mono); letter-spacing: .12em; text-transform: uppercase;
+}
+.swatch button i { width: 16px; height: 16px; border: 1px solid #555; display: block; }
+.swatch button[aria-checked="true"] { border-color: var(--red); color: var(--red); }
+.buy .cta { margin-top: 24px; }
+.buy .cta[aria-disabled="true"] { opacity: .5; pointer-events: none; }
+.buy .fine { color: var(--dim); font-size: 11px; margin-top: 16px; }
+
 /* ---------- about ---------- */
 .about { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
 .file { border: 1px solid var(--line); padding: 20px; background: rgba(12,12,12,.85); font-size: 13px; }
@@ -298,6 +322,7 @@ footer {
   .word { font-size: 27vw; }
   .player { grid-template-columns: 1fr; justify-items: start; }
   .about { grid-template-columns: 1fr; }
+  .merch { grid-template-columns: 1fr; }
   .links a { grid-template-columns: 34px 1fr auto; padding: 16px 4px; }
   .links .hd { display: none; }
   .file div { grid-template-columns: 90px 1fr; }
@@ -320,7 +345,7 @@ footer {
     <a href="#about">about</a>
     <a href="#music">music</a>
     <a href="#links">links</a>
-    <a href="https://coobyp.store" target="_blank" rel="noopener">merch</a>
+    <a href="#merch">merch</a>
     <a href="#contact">contact</a>
   </nav>
 </header>
@@ -389,10 +414,34 @@ footer {
     </div>
   </section>
 
+  <section id="merch" class="rv">
+    <div class="label"><i>03</i> merch</div>
+    <h2>free <span class="o">coobyp</span></h2>
+    <div class="merch">
+      <div class="tee" id="tee" data-c="black">
+        <svg viewBox="0 0 400 420" role="img" aria-labelledby="teeAlt">
+          <title id="teeAlt">FREE COOBYP t-shirt</title>
+          <path class="cloth" d="M128 20 C150 40 250 40 272 20 L372 62 L340 152 L300 136 L300 404 L100 404 L100 136 L60 152 L28 62 Z"/>
+          <path class="collar" d="M150 26 C168 52 232 52 250 26" fill="none" stroke-width="7"/>
+          <text class="ink" x="200" y="150" text-anchor="middle">FREE</text>
+          <text class="ink" x="200" y="214" text-anchor="middle">COOBYP</text>
+        </svg>
+      </div>
+      <div class="buy">
+        <p class="tag">unisex tee · printed on demand · ships to you</p>
+        <div class="swatch" role="radiogroup" aria-label="color">
+          <button type="button" role="radio" aria-checked="true" data-c="black"><i style="background:#0b0b0b"></i>black / red</button>
+          <button type="button" role="radio" aria-checked="false" data-c="white"><i style="background:#f4f4f4"></i>white / black</button>
+        </div>
+        <a class="cta" id="shop" href="#merch" aria-disabled="true">dropping soon</a>
+        <p class="fine">checkout, printing &amp; shipping handled by printify. sizes s–3xl.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="links" class="rv">
-    <div class="label"><i>03</i> links</div>
+    <div class="label"><i>04</i> links</div>
     <ul class="links">
-      <li><a href="https://coobyp.store" target="_blank" rel="noopener"><span class="nm">merch</span><span class="hd">90,000</span><span class="ar">→</span></a></li>
       <li><a href="https://soundcloud.com/coobyp" target="_blank" rel="noopener"><span class="nm">soundcloud</span><span class="hd">/coobyp</span><span class="ar">→</span></a></li>
       <li><a href="https://www.youtube.com/@coobyp" target="_blank" rel="noopener"><span class="nm">youtube</span><span class="hd">@coobyp</span><span class="ar">→</span></a></li>
       <li><a href="https://www.instagram.com/coobyp" target="_blank" rel="noopener"><span class="nm">instagram</span><span class="hd">@coobyp</span><span class="ar">→</span></a></li>
@@ -404,7 +453,7 @@ footer {
   </section>
 
   <section id="contact" class="rv">
-    <div class="label"><i>04</i> contact</div>
+    <div class="label"><i>05</i> contact</div>
     <p style="color:var(--dim);margin:0 0 18px">booking, features, collabs, whatever:</p>
     <a class="mail" id="email" href="mailto:me@coobyp.com">me@coobyp.com</a>
     <div style="margin-top:18px">
@@ -461,6 +510,20 @@ footer {
       buf = '';
     }
   });
+
+  // merch: set SHOP_URL to the printify store link to turn on the buy button
+  var SHOP_URL = '';
+  var tee = document.getElementById('tee'), shop = document.getElementById('shop');
+  document.querySelectorAll('.swatch button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      tee.setAttribute('data-c', b.getAttribute('data-c'));
+      document.querySelectorAll('.swatch button').forEach(function (x) { x.setAttribute('aria-checked', String(x === b)); });
+    });
+  });
+  if (SHOP_URL) {
+    shop.href = SHOP_URL; shop.target = '_blank'; shop.rel = 'noopener';
+    shop.removeAttribute('aria-disabled'); shop.textContent = 'cop it';
+  }
 
   // copy email
   var out = document.getElementById('copied');
