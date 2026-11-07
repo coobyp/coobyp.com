@@ -4,12 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>coobyp</title>
-<meta name="description" content="coobyp — underground trap out of west tennessee. music, links, contact.">
+<meta name="description" content="coobyp — underground trap out of west tennessee. all plats, baby come n slide wimmie. music, links, merch, contact.">
+<link rel="canonical" href="https://coobyp.com/">
 <meta name="theme-color" content="#070707">
 <meta property="og:title" content="coobyp">
 <meta property="og:description" content="underground trap out of west tennessee. formerly ninety thousand.">
-<meta property="og:url" content="https://coobyp.com">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23070707'/%3E%3Ctext x='32' y='50' font-family='Impact,sans-serif' font-size='52' text-anchor='middle' fill='%23ff2a2a'%3EC%3C/text%3E%3C/svg%3E">
+<meta property="og:url" content="https://coobyp.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="coobyp">
+<meta property="og:image" content="https://coobyp.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="coobyp — all plats, baby come n slide wimmie">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@coobyp">
+<meta name="twitter:image" content="https://coobyp.com/og.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -190,6 +203,9 @@ h2 .o { color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
 .pbtn.on .pause { display: block; }
 .ptitle { font: 400 clamp(22px, 3.4vw, 34px)/1.05 var(--display); text-transform: uppercase; margin: 0 0 4px; overflow-wrap: anywhere; }
 .pmeta { color: var(--dim); font-size: 12px; margin-bottom: 14px; }
+.player.loading .ptitle, .player.loading .pmeta { animation: pulse 1.2s ease-in-out infinite; }
+.player.loading .pbtn { opacity: .4; cursor: wait; }
+@keyframes pulse { 50% { opacity: .35; } }
 .viz { display: flex; align-items: flex-end; gap: 3px; height: 54px; margin-bottom: 12px; }
 .viz i { flex: 1; background: var(--red); height: 6%; transition: height .09s linear; opacity: .9; }
 .bar { height: 4px; background: var(--line); cursor: pointer; position: relative; }
@@ -304,6 +320,7 @@ footer {
     <a href="#about">about</a>
     <a href="#music">music</a>
     <a href="#links">links</a>
+    <a href="https://coobyp.store" target="_blank" rel="noopener">merch</a>
     <a href="#contact">contact</a>
   </nav>
 </header>
@@ -349,14 +366,14 @@ footer {
   <section id="music" class="rv">
     <div class="label"><i>02</i> music</div>
     <h2>feel <span class="o">me</span></h2>
-    <div class="player" id="player">
+    <div class="player loading" id="player" aria-busy="true">
       <button class="pbtn" id="pbtn" type="button" aria-label="play">
         <svg class="play" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg>
         <svg class="pause" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
       </button>
       <div style="min-width:0;width:100%">
-        <p class="ptitle" id="ptitle">coobyp</p>
-        <div class="pmeta" id="pmeta">streaming from soundcloud</div>
+        <p class="ptitle" id="ptitle">loading tracks…</p>
+        <div class="pmeta" id="pmeta">connecting to soundcloud</div>
         <div class="viz" id="viz"></div>
         <div class="bar" id="bar"><b id="prog"></b></div>
         <div class="prow">
@@ -375,6 +392,7 @@ footer {
   <section id="links" class="rv">
     <div class="label"><i>03</i> links</div>
     <ul class="links">
+      <li><a href="https://coobyp.store" target="_blank" rel="noopener"><span class="nm">merch</span><span class="hd">90,000</span><span class="ar">→</span></a></li>
       <li><a href="https://soundcloud.com/coobyp" target="_blank" rel="noopener"><span class="nm">soundcloud</span><span class="hd">/coobyp</span><span class="ar">→</span></a></li>
       <li><a href="https://www.youtube.com/@coobyp" target="_blank" rel="noopener"><span class="nm">youtube</span><span class="hd">@coobyp</span><span class="ar">→</span></a></li>
       <li><a href="https://www.instagram.com/coobyp" target="_blank" rel="noopener"><span class="nm">instagram</span><span class="hd">@coobyp</span><span class="ar">→</span></a></li>
@@ -398,7 +416,7 @@ footer {
 
 <footer>
   <span>&copy; <span id="yr">2026</span> coobyp</span>
-  <span>no ads / no tracking</span>
+  <span>no ads / no cookies / <a href="/privacy.html">privacy</a></span>
   <span>psst: type 90000</span>
 </footer>
 
@@ -473,7 +491,7 @@ footer {
   var ok = /(^|\.)coobyp\.com$/.test(host) || /github\.io$/.test(host) || host === 'localhost' || host === '127.0.0.1';
   var player = document.getElementById('player');
   var pbtn = document.getElementById('pbtn');
-  if (!ok) { pbtn.disabled = true; document.getElementById('pmeta').textContent = 'player loads on coobyp.com'; return; }
+  if (!ok) { ready(); pbtn.disabled = true; document.getElementById('ptitle').textContent = 'coobyp'; document.getElementById('pmeta').textContent = 'player loads on coobyp.com'; return; }
 
   var f = document.createElement('iframe');
   f.id = 'sc'; f.title = 'coobyp on soundcloud'; f.allow = 'autoplay';
@@ -482,7 +500,8 @@ footer {
   document.getElementById('scwrap').appendChild(f);
 
   function fmt(ms) { var s = Math.floor(ms / 1000); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
-  function fallback() { player.classList.add('fallback'); }
+  function ready() { player.classList.remove('loading'); player.removeAttribute('aria-busy'); }
+  function fallback() { ready(); player.classList.add('fallback'); }
 
   var s = document.createElement('script');
   s.src = 'https://w.soundcloud.com/player/api.js';
@@ -501,7 +520,7 @@ footer {
         if (!playing) time.textContent = '0:00 / ' + fmt(dur);
       });
     }
-    w.bind(E.READY, function () { clearTimeout(timer); sound(); });
+    w.bind(E.READY, function () { clearTimeout(timer); ready(); sound(); });
     w.bind(E.PLAY, function () { playing = true; pbtn.classList.add('on'); pbtn.setAttribute('aria-label', 'pause'); sound(); });
     w.bind(E.PAUSE, function () { playing = false; pbtn.classList.remove('on'); pbtn.setAttribute('aria-label', 'play'); });
     w.bind(E.FINISH, function () { playing = false; pbtn.classList.remove('on'); });
@@ -521,5 +540,7 @@ footer {
   document.head.appendChild(s);
 })();
 </script>
+<!-- goatcounter: cookieless visit counts, see /privacy.html -->
+<script data-goatcounter="https://coobyp.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>404 — coobyp</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#070707">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #070707; --ink: #ece8e1; --dim: #8a857d; --red: #ff2a2a; --cyan: #2af5ff; color-scheme: dark; }
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100svh; display: grid; place-items: center; text-align: center;
+  padding: 24px 16px; background: radial-gradient(600px circle at 50% 40%, rgba(255, 42, 42, .16), transparent 60%), var(--bg);
+  color: var(--ink); font: 14px/1.6 "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+.scan { position: fixed; inset: 0; pointer-events: none; background: repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,0,0,.28) 2px 3px); }
+h1 { position: relative; margin: 0; font: 400 clamp(140px, 40vw, 360px)/.82 Anton, Impact, sans-serif; }
+h1::before, h1::after { content: "404"; position: absolute; inset: 0; mix-blend-mode: screen; }
+h1::before { color: var(--red); animation: a 2.4s infinite steps(1); }
+h1::after { color: var(--cyan); opacity: .7; animation: b 1.9s infinite steps(1); }
+@keyframes a { 0%, 70%, 100% { opacity: 0; } 71% { opacity: 1; transform: translate(-7px, 2px); clip-path: inset(15% 0 55% 0); } 75% { opacity: 1; transform: translate(5px, -2px); clip-path: inset(60% 0 15% 0); } 79% { opacity: 0; } }
+@keyframes b { 0%, 60%, 100% { opacity: 0; } 61% { opacity: .7; transform: translate(6px, -1px); clip-path: inset(70% 0 5% 0); } 65% { opacity: 0; } }
+p { margin: 26px 0 0; color: var(--red); letter-spacing: .28em; text-transform: uppercase; font-size: clamp(12px, 1.6vw, 15px); }
+a {
+  display: inline-block; margin-top: 34px; padding: 14px 26px; border: 1px solid var(--ink); color: var(--ink);
+  font-weight: 700; font-size: 12px; letter-spacing: .3em; text-transform: uppercase; text-decoration: none;
+}
+a:hover { background: var(--red); border-color: var(--red); color: #000; }
+@media (prefers-reduced-motion: reduce) { h1::before, h1::after { animation: none; opacity: 0; } }
+</style>
+</head>
+<body>
+<div class="scan"></div>
+<main>
+  <h1>404</h1>
+  <p>this page slid off. it ain't here.</p>
+  <a href="/">← back to coobyp</a>
+</main>
+</body>
+</html>
