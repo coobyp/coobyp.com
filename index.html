@@ -252,7 +252,7 @@ h2 .o { color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
 .tee { background: radial-gradient(circle at 50% 45%, rgba(255, 42, 42, .14), transparent 65%); border: 1px solid var(--line); padding: 24px; }
 .tee svg { display: block; width: 100%; max-width: 420px; margin: 0 auto; }
 .tee .cloth { transition: fill .3s; }
-.tee .ink { font: 400 66px var(--display); transition: fill .3s; }
+.tee .ink { font: 400 64px var(--display); transition: fill .3s; }
 .tee[data-c="black"] .cloth { fill: #111; stroke: #333; stroke-width: 2; }
 .tee[data-c="black"] .collar { stroke: #000; }
 .tee[data-c="black"] .ink { fill: #e3001b; }
@@ -423,8 +423,10 @@ footer {
           <title id="teeAlt">FREE COOBYP t-shirt</title>
           <path class="cloth" d="M128 20 C150 40 250 40 272 20 L372 62 L340 152 L300 136 L300 404 L100 404 L100 136 L60 152 L28 62 Z"/>
           <path class="collar" d="M150 26 C168 52 232 52 250 26" fill="none" stroke-width="7"/>
-          <text class="ink" x="200" y="150" text-anchor="middle">FREE</text>
-          <text class="ink" x="200" y="214" text-anchor="middle">COOBYP</text>
+          <g transform="scale(1 2.5)">
+            <text class="ink" x="110" y="80" textLength="180" lengthAdjust="spacingAndGlyphs">FREE</text>
+            <text class="ink" x="110" y="141" textLength="180" lengthAdjust="spacingAndGlyphs">COOBYP</text>
+          </g>
         </svg>
       </div>
       <div class="buy">
