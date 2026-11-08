@@ -593,17 +593,25 @@ footer {
   });
 
   // merch: set SHOP_URL to the shopify (printful) store link to turn on the buy button; shopify payments payouts go to the coinbase direct deposit (usdc)
+  // the buy button opens the product page for whichever color is picked
   var SHOP_URL = '';
+  var SHOP_PRODUCTS = { black: '/products/free-coobyp-tee-black', white: '/products/free-coobyp-tee-white' };
   var tee = document.getElementById('tee'), shop = document.getElementById('shop');
+  function setShop() {
+    if (!SHOP_URL) return;
+    shop.href = SHOP_URL + SHOP_PRODUCTS[tee.getAttribute('data-c')];
+  }
   document.querySelectorAll('.swatch button').forEach(function (b) {
     b.addEventListener('click', function () {
       tee.setAttribute('data-c', b.getAttribute('data-c'));
       document.querySelectorAll('.swatch button').forEach(function (x) { x.setAttribute('aria-checked', String(x === b)); });
+      setShop();
     });
   });
   if (SHOP_URL) {
-    shop.href = SHOP_URL; shop.target = '_blank'; shop.rel = 'noopener';
+    shop.target = '_blank'; shop.rel = 'noopener';
     shop.removeAttribute('aria-disabled'); shop.textContent = 'cop it';
+    setShop();
   }
 
   // ---------- pay: usdc on solana straight to cooby's coinbase address ----------
