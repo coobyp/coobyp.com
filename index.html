@@ -616,7 +616,7 @@ footer {
 
   // ---------- pay: usdc on solana straight to cooby's coinbase address ----------
   // set CARD_URL to a card / apple pay checkout link to turn on the card button
-  var CARD_URL = '';
+  var CARD_URL = 'https://pay.coobyp.com';
   var ADDR = '2YkbQLUX9R3MQJESJe5ST1PP5nPVwzYhiYE9ejdxYmYa', MINT = 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v';
   var payAmt = 'any', payFrom = 'wallet';
   var pqr = document.getElementById('payqr'), plink = document.getElementById('paylink'), phint = document.getElementById('payhint');
@@ -658,7 +658,7 @@ footer {
     var card = document.getElementById('card');
     card.href = CARD_URL; card.target = '_blank'; card.rel = 'noopener';
     card.removeAttribute('aria-disabled'); card.textContent = 'pay with card / apple pay';
-    document.getElementById('cardrow').textContent = 'card, apple pay, google pay. it lands as USDC on my end.';
+    document.getElementById('cardrow').textContent = 'card, apple pay, google pay. any amount, secure checkout by stripe.';
   }
 
   // copy email
